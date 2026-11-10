@@ -1,0 +1,100 @@
+---
+// Importamos la configuración central de la empresa con los datos de contacto y ubicación
+import { siteConfig } from '../data/site';
+
+// Para enriquecer la propuesta de valor sin inventar datos en siteConfig, 
+// agregamos características locales relevantes utilizando la ciudad y estado existentes.
+const locationLabel = `${siteConfig.city}, ${siteConfig.state}`;
+---
+
+<!-- Sección Hero con HTML semántico -->
+<section class="relative bg-surface text-slate-800 py-12 md:py-20 lg:py-24 border-b border-slate-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <!-- Bloque de contenido principal (Textos y CTAs) -->
+      <div class="lg:col-span-7 flex flex-col items-start text-left">
+        
+        <!-- Badge de ubicación para generar confianza local inmediata -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-xs sm:text-sm mb-6">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <span>Top-Rated Roofing Contractors in {locationLabel}</span>
+        </div>
+
+        <!-- Encabezado principal enfocado en el dolor del cliente (dueños de casa) -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+          Protect Your Home With Premium <span class="text-primary">Roofing Services</span>
+        </h1>
+
+        <!-- Subtítulo explicativo con tono directo y confiable -->
+        <p class="text-base sm:text-lg md:text-xl text-slate-600 mb-8 max-w-2xl leading-relaxed">
+          Reliable roof replacement and emergency repair solutions built to last. Serving homeowners across {locationLabel} with fast response times and quality workmanship.
+        </p>
+
+        <!-- Botones de Acción principales (CTA): optimizados mobile-first para facilitar el toque con el pulgar -->
+        <div class="w-full sm:w-auto flex flex-col sm:flex-row gap-4 mb-8">
+          
+          <!-- Enlace directo para llamada (Prioridad #1 en tráfico móvil) -->
+          <a
+            href={`tel:${siteConfig.phoneForLink}`}
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg bg-primary text-white font-bold text-lg shadow-lg hover:bg-primary/90 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-primary/40"
+            aria-label={`Call ${siteConfig.companyName} now at ${siteConfig.phoneDisplay}`}
+          >
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <span>Call Now: {siteConfig.phoneDisplay}</span>
+          </a>
+
+          <!-- Botón hacia el formulario de cotización gratuita -->
+          <a
+            href="#quote"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-lg bg-accent text-slate-900 font-bold text-lg shadow-md hover:bg-accent/90 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-accent/40"
+          >
+            Get Free Quote
+          </a>
+        </div>
+
+        <!-- Puntos de prueba social y garantías de confianza rápida -->
+        <ul class="w-full grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t border-slate-200 text-slate-700 text-xs sm:text-sm font-medium">
+          <li class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Licensed & Insured</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Free On-Site Inspection</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Flexible Financing Available</span>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Bloque de imagen destacada -->
+      <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-200 aspect-[4/3] sm:aspect-[16/9] lg:aspect-[4/3]">
+          <!-- Sin loading="lazy" por ser la imagen principal en el Hero (mejora rendimiento LCP) -->
+          <img
+            src="/images/hero-roofing.jpg"
+            alt={`Professional roofing team installing shingles in ${locationLabel}`}
+            width="800"
+            height="600"
+            class="w-full h-full object-cover object-center"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,98 @@
+---
+// Importamos la configuración central de la empresa con los datos de contacto y ubicación
+import { siteConfig } from '../data/site';
+
+// Definimos los diferenciadores clave orientados al mercado de roofing en USA
+const coreAdvantages = [
+  {
+    title: "Licensed & Fully Insured",
+    description: "Complete protection and peace of mind with full liability coverage and state licensing for every project.",
+    iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+  },
+  {
+    title: "Top-Tier Materials & Warranties",
+    description: "We partner with leading manufacturers to offer industry-leading manufacturer warranties and long-lasting durability.",
+    iconPath: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+  },
+  {
+    title: "Transparent, Honest Pricing",
+    description: "No hidden fees, no surprise costs. You get a detailed, written estimate before a single nail goes into your roof.",
+    iconPath: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    title: "Experienced Local Crews",
+    description: `Proudly serving homeowners in ${siteConfig.city} and surrounding areas with deep knowledge of local weather challenges.`,
+    iconPath: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+  }
+];
+---
+
+<!-- Sección de Por Qué Elegirnos con HTML semántico -->
+<section class="py-16 md:py-24 bg-surface text-slate-800 border-t border-b border-slate-200">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    
+    <!-- Encabezado de la sección -->
+    <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+      <span class="text-primary font-bold text-xs sm:text-sm tracking-wider uppercase bg-primary/10 px-3 py-1 rounded-full mb-3 inline-block">
+        Why Choose {siteConfig.companyName}
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mt-2 mb-4">
+        The Trusted Choice for Your Home
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+        We combine superior craftsmanship, top-grade materials, and dependable customer service to protect what matters most to your family.
+      </p>
+    </div>
+
+    <!-- Cuadrícula de ventajas competitivas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {coreAdvantages.map((advantage) => (
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start group">
+          
+          <!-- Contenedor del ícono -->
+          <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={advantage.iconPath}/>
+            </svg>
+          </div>
+
+          <!-- Título de la ventaja -->
+          <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors duration-200">
+            {advantage.title}
+          </h3>
+
+          <!-- Descripción -->
+          <p class="text-slate-600 text-sm leading-relaxed">
+            {advantage.description}
+          </p>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- Bloque de estadística o confianza inferior -->
+    <div class="mt-16 bg-slate-900 text-white rounded-2xl p-8 sm:p-12 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="max-w-xl text-center lg:text-left">
+        <h3 class="text-2xl sm:text-3xl font-extrabold mb-3">Ready to start your roofing project?</h3>
+        <p class="text-slate-300 text-sm sm:text-base">
+          Get in touch today for a fast, free, no-obligation inspection and quote from our experts.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+        <a
+          href={`tel:${siteConfig.phoneForLink}`}
+          class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-primary text-white font-bold text-base shadow-md hover:bg-primary/90 transition-colors duration-200"
+        >
+          Call: {siteConfig.phoneDisplay}
+        </a>
+        <a
+          href="#quote"
+          class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-accent text-slate-900 font-bold text-base shadow-md hover:bg-accent/90 transition-colors duration-200"
+        >
+          Get Free Quote
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
