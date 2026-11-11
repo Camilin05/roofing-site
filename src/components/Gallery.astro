@@ -19,24 +19,24 @@ import { siteConfig } from '../data/site'
         >
           <!-- Foto de abajo: el DESPUÉS -->
           <img
-            src={`/images/gallery/${job.jobId}-after.jpeg`}
-            data-fallback={`/images/gallery/${job.jobId}-after.jpg`}
+            src={`/images/gallery/${job.jobId}-after.webp`}
+            data-fallback={`/images/gallery/${job.jobId}-after.webp`}
             alt={`After: ${job.altText}`}
             loading="lazy"
             class="absolute inset-0 h-full w-full object-cover"
-            onerror="if(this.src.endsWith('.jpeg')){this.src=this.dataset.fallback;}"
+            onerror="if(this.src.endsWith('.webp')){this.src=this.dataset.fallback;}"
           />
 
           <!-- Foto de arriba: el ANTES -->
           <img
             data-before-image
-            src={`/images/gallery/${job.jobId}-before.jpeg`}
-            data-fallback={`/images/gallery/${job.jobId}-before.jpg`}
+            src={`/images/gallery/${job.jobId}-before.webp`}
+            data-fallback={`/images/gallery/${job.jobId}-before.webp`}
             alt={`Before: ${job.altText}`}
             loading="lazy"
             class="absolute inset-0 h-full w-full object-cover"
             style="clip-path: inset(0 50% 0 0);"
-            onerror="if(this.src.endsWith('.jpeg')){this.src=this.dataset.fallback;}"
+            onerror="if(this.src.endsWith('.webp')){this.src=this.dataset.fallback;}"
           />
 
           <span class="absolute left-3 top-3 rounded bg-black/60 px-2 py-1 text-xs font-bold text-white">

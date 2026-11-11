@@ -23,5 +23,7 @@ export const siteConfig = {
   { jobId: "job3", altText: "Roofing project 3" },
   { jobId: "job4", altText: "Roofing project 4" },
   { jobId: "job5", altText: "Roofing project 5" },
+  { jobId: "job6", altText: "Roofing project 6" },
+  { jobId: "job7", altText: "Roofing project 7" },
 ],
 }
