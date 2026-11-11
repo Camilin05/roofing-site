@@ -8,8 +8,9 @@ import { siteConfig } from '../data/site';
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl h-20 flex items-center justify-between">
     
     <!-- Logotipo o Nombre de la empresa -->
-    <a href="/" class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-primary/40 rounded-lg p-1">
-      <span class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-primary transition-colors duration-200">
+    <a href="#" class="flex min-w-0 items-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/40 rounded-lg p-1">
+      <img src="/images/logo.jpg" alt="" class="h-10 w-auto" />
+      <span class="text-sm font-extrabold leading-tight text-slate-900 sm:text-xl">
         {siteConfig.companyName}
       </span>
     </a>
@@ -18,13 +19,13 @@ import { siteConfig } from '../data/site';
     <nav class="hidden md:flex items-center gap-8">
       <a href="#services" class="text-sm font-semibold text-slate-700 hover:text-primary transition-colors duration-200">Services</a>
       <a href="#why-us" class="text-sm font-semibold text-slate-700 hover:text-primary transition-colors duration-200">Why Us</a>
-      <a href="#quote" class="text-sm font-semibold text-slate-700 hover:text-primary transition-colors duration-200">Free Quote</a>
+      <a href="#gallery" class="text-sm font-semibold text-slate-700 hover:text-primary transition-colors duration-200">Gallery</a>
     </nav>
 
-    <!-- Botones de acción rápida (Teléfono y Cotización) -->
+    <!-- Botones de acción derecha y botón hamburguesa móvil -->
     <div class="flex items-center gap-3">
       
-      <!-- Botón de llamada rápida (Visible en todos los tamaños, esencial para móvil) -->
+      <!-- Botón de llamada rápida visible en todos los tamaños -->
       <a
         href={`tel:${siteConfig.phoneForLink}`}
         class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary/10 text-primary font-bold text-sm hover:bg-primary hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40"
@@ -36,15 +37,66 @@ import { siteConfig } from '../data/site';
         <span class="hidden sm:inline">{siteConfig.phoneDisplay}</span>
       </a>
 
-      <!-- Botón CTA Get Quote -->
+      <!-- Botón CTA de Escritorio -->
       <a
-        href="#quote"
+        href="#freeEstimates"
         class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-accent text-slate-900 font-bold text-sm hover:bg-accent/90 transition-colors duration-200 shadow-sm"
       >
-        Get Free Quote
+        Free Estimates
       </a>
+
+      <!-- Botón Hamburguesa para Móvil (Mínimo 44px de área táctil por accesibilidad) -->
+      <button
+        id="menuToggle"
+        type="button"
+        class="md:hidden p-3 rounded-lg text-slate-700 hover:text-primary hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
 
     </div>
 
   </div>
+
+  <!-- Menú desplegable para dispositivos móviles -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+    <a href="#services" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100 hover:text-primary">Services</a>
+    <a href="#why-us" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100 hover:text-primary">Why Us</a>
+    <a href="#gallery" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-100 hover:text-primary">Gallery</a>
+    <div class="pt-2">
+      <a
+        href="#freeEstimates"
+        class="mobile-link block w-full text-center px-4 py-3 rounded-lg bg-accent text-slate-900 font-bold text-base shadow-sm hover:bg-accent/90"
+      >
+        Free Estimates
+      </a>
+    </div>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.querySelector<HTMLButtonElement>('#menuToggle')
+  const mobileMenu = document.querySelector<HTMLElement>('#mobileMenu')
+  const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-link')
+
+  if (menuToggle && mobileMenu) {
+    // Alternar visibilidad del menú al hacer clic en la hamburguesa
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true'
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded))
+      mobileMenu.classList.toggle('hidden')
+    })
+
+    // Cerrar automáticamente el menú al hacer clic en cualquier enlace interno
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden')
+        menuToggle.setAttribute('aria-expanded', 'false')
+      })
+    })
+  }
+</script>

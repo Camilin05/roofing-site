@@ -1,5 +1,5 @@
 ---
-// Importamos la configuración central de la empresa con los datos de servicios y marca
+// Importamos la configuración central de la empresa con los datos de servicios y ubicación
 import { siteConfig } from '../data/site';
 ---
 
@@ -10,28 +10,33 @@ import { siteConfig } from '../data/site';
     <!-- Encabezado de la sección -->
     <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
       <span class="text-primary font-bold text-xs sm:text-sm tracking-wider uppercase bg-primary/10 px-3 py-1 rounded-full mb-3 inline-block">
-        Our Expertise
+        Our Services
       </span>
       <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mt-2 mb-4">
-        Professional Roofing Services in {siteConfig.city}
+        Roofing Services in {siteConfig.city}
       </h2>
       <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-        From emergency storm repairs to complete roof replacements, our certified team delivers top-tier workmanship backed by industry-leading warranties.
+        New roofs, replacements, repairs, leaks, maintenance and gutters for homeowners in {siteConfig.city} and nearby cities.
       </p>
     </div>
 
-    <!-- Cuadrícula de servicios iterando sobre el arreglo importado de siteConfig -->
+    <!-- Cuadrícula de servicios con contraste visible e intercalado marcado -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {siteConfig.services.map((service) => (
-        <article class="bg-surface rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+      {siteConfig.services.map((service, index) => (
+        <article 
+          class:list={[
+            "rounded-2xl p-6 sm:p-8 border transition-all duration-300 flex flex-col justify-between group hover:shadow-xl",
+            // Alternamos entre blanco impecable y un azul slate claro con suficiente contraste
+            index % 2 === 0 
+              ? "bg-white border-slate-200 shadow-sm" 
+              : "bg-slate-100/90 border-slate-300/80 shadow-inner"
+          ]}
+        >
           
           <div>
-            <!-- Contenedor del ícono del servicio -->
-            <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-              <!-- Renderizamos el SVG correspondiente o un ícono genérico si se prefiere -->
-              <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3L2 12h3v8h14v-8h3L12 3z"/>
-              </svg>
+            <!-- Contenedor del ícono/emoji dinámico -->
+            <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-6 group-hover:bg-primary transition-colors duration-300">
+              <span aria-hidden="true">{service.icon}</span>
             </div>
 
             <!-- Título del servicio -->
@@ -46,7 +51,7 @@ import { siteConfig } from '../data/site';
           </div>
 
           <!-- Enlace de acción rápido para cada servicio -->
-          <div class="pt-4 border-t border-slate-200">
+          <div class="pt-4 border-t border-slate-200/80">
             <a
               href="#quote"
               class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary/80 transition-colors duration-200"
@@ -60,20 +65,6 @@ import { siteConfig } from '../data/site';
 
         </article>
       ))}
-    </div>
-
-    <!-- Llamado a la acción inferior dentro de la sección de servicios -->
-    <div class="mt-12 text-center bg-surface border border-slate-200 rounded-2xl p-8 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-      <div class="text-left">
-        <h3 class="text-xl font-bold text-slate-900 mb-1">Not sure what service your roof needs?</h3>
-        <p class="text-slate-600 text-sm">Schedule a complimentary on-site roof inspection with our experts today.</p>
-      </div>
-      <a
-        href="#quote"
-        class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-white font-bold text-sm shadow-md hover:bg-primary/90 transition-colors duration-200 flex-shrink-0"
-      >
-        Book Free Inspection
-      </a>
     </div>
 
   </div>
